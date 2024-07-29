@@ -13,6 +13,21 @@ const browse = async (req, res, next) => {
   }
 };
 
+const edit = async (req, res, next) => {
+  const boat = {
+    id: req.params.id,
+    coord_x: req.body.coord_x,
+    coord_y: req.body.coord_y,
+  };
+  try {
+    const affectedRows = await tables.boat.update(boat);
+    res.status(204).json(affectedRows);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
+  edit,
 };
