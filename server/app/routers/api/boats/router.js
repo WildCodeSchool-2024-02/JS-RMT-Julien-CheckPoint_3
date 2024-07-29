@@ -6,9 +6,12 @@ const router = express.Router();
 // Define Your API Routes Here
 /* ************************************************************************* */
 
-const { browse } = require("../../../controllers/boatActions");
+const { browse, edit } = require("../../../controllers/boatActions");
 
 router.get("/", browse);
+
+// Route to edit an existing category
+router.put("/:id", edit);
 
 /* ************************************************************************* */
 
