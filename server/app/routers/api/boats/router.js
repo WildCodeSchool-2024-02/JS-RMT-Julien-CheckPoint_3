@@ -10,6 +10,8 @@ const { browse } = require("../../../controllers/boatActions");
 
 router.get("/", browse);
 
+router.get("/:tiles", browse);
+
 /* ************************************************************************* */
 
 module.exports = router;
