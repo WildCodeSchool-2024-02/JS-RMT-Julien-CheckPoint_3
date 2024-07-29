@@ -13,6 +13,26 @@ const browse = async (req, res, next) => {
   }
 };
 
+const edit = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    // eslint-disable-next-line camelcase
+    const { coord_x, coord_y } = req.body; // Utilisation des noms originaux
+
+    // eslint-disable-next-line camelcase
+    const affectedRows = await tables.boat.update({ id, coord_x, coord_y });
+
+    if (affectedRows === 0) {
+      res.status(404).send({ error: "Boat not found" });
+    } else {
+      res.status(204).send(); // Réponse avec un statut 204
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
+  edit,
 };
