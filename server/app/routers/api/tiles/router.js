@@ -3,20 +3,12 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-// Import And Use Routers Here
+// Define Your API Routes Here
 /* ************************************************************************* */
 
-const boatsRouter = require("./boats/router");
+const tileActions = require("../../../controllers/tileActions");
 
-router.use("/boats", boatsRouter);
-
-const gamesRouter = require("./games/router");
-
-router.use("/games", gamesRouter);
-
-const tilesRouter = require("./tiles/router");
-
-router.use("/tiles", tilesRouter);
+router.get("/", tileActions.browse);
 
 /* ************************************************************************* */
 
