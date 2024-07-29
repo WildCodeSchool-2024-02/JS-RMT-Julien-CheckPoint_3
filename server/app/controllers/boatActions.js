@@ -13,6 +13,27 @@ const browse = async (req, res, next) => {
   }
 };
 
+const edit = async (req, res, next) => {
+  const boatId = req.params.id;
+
+  try {
+    const affectedRows = await tables.boat.update({
+      id: boatId,
+      coord_x:req.body.coord_x,
+      coord_y:req.body.coord_y,
+    });
+
+    if (affectedRows === 0) {
+      return res.status(404).send({ message: "Boat not found" });
+    }
+
+    return res.status(204).send();
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   browse,
+  edit,
 };
