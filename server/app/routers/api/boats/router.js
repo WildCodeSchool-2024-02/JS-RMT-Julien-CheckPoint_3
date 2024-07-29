@@ -1,4 +1,5 @@
 const express = require("express");
+const tileExist = require("../../../services/tileExists");
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.get("/", browse);
 
 const { edit } = require("../../../controllers/boatActions");
 
-router.put("/:id", edit);
+router.put("/:id", tileExist, edit);
 /* ************************************************************************* */
 
 module.exports = router;

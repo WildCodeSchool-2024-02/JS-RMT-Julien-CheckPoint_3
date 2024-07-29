@@ -35,6 +35,14 @@ class TileRepository extends AbstractRepository {
 
     return result;
   }
+
+  async readByCoordinates(coordX, coordY) {
+    const [rows] = await this.database.query(
+      "SELECT * FROM tile WHERE coord_x = ? AND coord_y = ?",
+      [coordX, coordY]
+    );
+    return rows;
+  }
 }
 
 module.exports = TileRepository;
