@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractRepository = require("./AbstractRepository");
 
 class BoatRepository extends AbstractRepository {
@@ -6,11 +7,25 @@ class BoatRepository extends AbstractRepository {
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all boats from the "boat" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
-
-    // Return the array of boats
+    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
     return rows;
+  }
+
+  async update({ id, coord_x, coord_y }) {
+    try {
+      const [result] = await this.database.query(
+        `UPDATE ${this.table} SET coordX = ?, coordY = ? WHERE id = ?`,
+        [coord_x, coord_y, id]
+      );
+      /* eslint-disable no-console */
+
+
+console.log(result);
+/* eslint-enable no-console */
+      return result.affectedRows;
+    } catch (error) {
+      throw new Error(`Update failed: ${error.message}`);
+    }
   }
 }
 
