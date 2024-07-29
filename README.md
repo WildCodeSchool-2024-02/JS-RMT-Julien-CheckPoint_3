@@ -116,7 +116,7 @@ Tu peux maintenant réaliser la suite, étape par étape (pour chaque étape, su
   - Pour cette étape, idéalement tu devrais utiliser `tables.tile` pour trouver des tuiles à partir de leurs coordonnées (tu devras ajouter une nouvelle méthode `readByCoordinates` à `TileRepository.js`).
   - Si tu as des difficultés à utiliser `TileRepository`, tu peux t'en passer en vérifiant que la coordonnée X est comprise entre 0 et 11 (inclus), et que la coordonnée Y est comprise entre 0 et 5 (inclus).
   - Si les coordonnées sont valides, passe au suivant. Sinon, répond avec un statut `422`.
-- `npm run test step5` : utiliser une jointure dans la méthode `readAll` de `BoatRepository` pour récupérer les informations de la tuile où se trouve le bateau. Assure toi de demander explicitement chaque champ (la jointure va te fournir 2 ids : `boat.id` et `tile.id`).
+- `npm run test step5` : utiliser une jointure dans la méthode `readAll` de `BoatRepository` pour récupérer les informations de la tuile où se trouve le bateau. Assure toi de demander explicitement chaque champ (la jointure va te fournir 2 ids : `boat.id` et `tile.id`)..
 
 Étape bonus :
 
