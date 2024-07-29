@@ -8,10 +8,12 @@ const router = express.Router();
 
 const { browse, edit } = require("../../../controllers/boatActions");
 
+const validateTile = require("../../../services/tileExists");
+
 router.get("/", browse);
 
 // Route to edit an existing category
-router.put("/:id", edit);
+router.put("/:id", validateTile, edit);
 
 /* ************************************************************************* */
 

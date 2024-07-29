@@ -23,6 +23,17 @@ class TileRepository extends AbstractRepository {
     return rows[0];
   }
 
+  async readByCoordinates(coordX, coordY) {
+    // Execute the SQL SELECT query to retrieve a specific category by its ID
+    const [rows] = await this.database.query(
+      `SELECT * FROM tile WHERE coord_x = ? AND coord_y = ?`,
+      [coordX, coordY]
+    );
+
+    // Return the first row of the result, which represents the category
+    return rows;
+  }
+
   async hideTreasure(island) {
     const [result] = await this.database.query(
       `update ${this.table} set has_treasure =
